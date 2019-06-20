@@ -27,8 +27,13 @@
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Large</a>
           </div>
-          <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="text-muted" href="#">
+          <div id="searchBox" class="col-4 d-flex justify-content-end align-items-center">
+            <div id="searchDiv" style="display: none">
+              <input id="searchTerm" type="search" class="col-7" value=""/>
+              <button id="submitSearch" class="col-4">Enviar</button>
+            </div>
+
+            <a id="searchLink" class="text-muted" href="#">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
             </a>
             <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
@@ -100,7 +105,11 @@
             From the Firehose
           </h3>
 
+          <div id="demo"></div>
+
           <div class="blog-post">
+            <!-- <h2 id="arrayResponseTitle"></h2>
+            <p id="arrayResponseBody"></p> -->
             <h2 class="blog-post-title">Sample blog post</h2>
             <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
 
@@ -220,6 +229,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="assets/js/vendor/holder.min.js"></script>
+    <script src="assets/js/src/scripts.js"></script>
     <script>
       Holder.addTheme('thumb', {
         bg: '#55595c',
@@ -227,5 +237,30 @@
         text: 'Thumbnail'
       });
     </script>
+    <!-- <script>
+
+      function reqListener() {
+        // var arrayResponse = new Map(this.responseText);
+        // console.log(typeof(Array.from(arrayResponse)));
+        // console.log(Array.from(arrayResponse));
+        this.responseText;
+
+        console.log(JSON.parse(this.responseText));
+        var arrayResponse = JSON.parse(this.responseText);
+        // console.log(arrayResponse[0].body);
+
+        document.getElementById("arrayResponseTitle").innerHTML = arrayResponse[0].title.toString();
+        document.getElementById("arrayResponseBody").innerHTML = arrayResponse[0].body.toString();
+
+      }
+
+      var oReq = new XMLHttpRequest();
+
+      oReq.onload = reqListener;
+
+      oReq.open("get", "https://5d04064fd1471e00149bb174.mockapi.io/api/v1/blogs", true)
+      oReq.send();
+
+    </script> -->
   </body>
 </html>
